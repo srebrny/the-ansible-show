@@ -1,50 +1,622 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
 
-		<title>reveal.js</title>
+<head>
+    <meta charset="utf-8">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <title>The (ansible) Show - base information @ srebniak.pl</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <meta name="description" content="Simple presentation about ansible ">
+    <meta name="author" content="Paweł 'Srebrny' Srebniak">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css" id="theme">
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>ansible</h1>
+            <h2>The Show</h2>
+            <h3>Automation for everyone</h3>
+            <p>
+                <small>Created by <a
+                        href="http://pycode.biz/?utm_source=githubc&utm_medium=presentation&utm_term=first_page&utm_content=page&utm_campaign=the_ansible_show">Paweł
+                    'Srebrny' Srebniak</a> / <a href="https://twitter.com/srebrny_dev">@srebrny_dev</a></small>
+            </p>
+        </section>
+
+        <section>
+            <section>
+                <h2>@srebrny_dev</h2>
+                <p>Who I am</p>
+                <a href="#" class="navigate-down">
+                    <img width="208" height="268" data-src="./1-220a.jpg" alt="Down arrow"/>
+                </a>
+            </section>
+            <section>
+                <h2>As developer - 10 year of PHP </h2>
+                <p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+            </section>
+            <section>
+                <h2>Python <3 - 3 years</h2>
+                <p>That's it, time to go back up.</p>
+                <br>
+                <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
+                     alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+            </section>
+            <section>
+                <h2>DevOps - 2 year</h2>
+                <p>That's it, time to go back up.</p>
+                <br>
+                <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
+                     alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+            </section>
+        </section>
+
+        <!-- Strutura katalogów -->
+        <section>
+            <section>
+                <h2>Directory structure</h2>
+
+                <p>I use advenced directory structure</p>
+
+                <p>See more at <a
+                        href="http://docs.ansible.com/ansible/playbooks_best_practices.html#alternative-directory-layout">best
+                    practices</a>.
+                </p>
+            </section>
+
+            <section>
+                <h2>Directory structure</h2>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+inventories/
+    production/
+        hosts    # inventory file for production servers
+        group_vars/
+        host_vars/
+    ...
+library/
+filter_plugins/
+
+roles/
+    common/
+    application/
+    ...
+
+deploy_front.yml
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Inventory</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+hosts               # inventory file for production servers
+group_vars/
+    group1           # here we assign variables to particular groups
+    group2           # ""
+host_vars/
+    hostname1        # if systems need specific variables, put them here
+    hostname2        # ""
+                    </code></pre>
+            </section>
+
+
+            <section>
+                <h2>Directory structure</h2>
+                <p>library required for custom modules, eg. do-cli, openstack_ext</p>
+                <pre><code class="hljs" data-trim contenteditable>
+                    library/ # (optional)
+                     </code></pre>
+            </section>
+
+            <section>
+                <h2>Directory structure</h2>
+                <p>Put here custom filter for filter inventories. see: do-json-inventory.py</p>
+                <pre><code class="hljs" data-trim contenteditable>
+                filter_plugins/ # if any custom filter plugins, put them here (optional)
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Directory structure</h2>
+                <p>Every roles goes into new directory.</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+roles/
+    common/
+    webtier/
+    monitoring/
+    fooapp/
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>Directory structure</h2>
+                <p>Playbooks names should describe what playbook do!</p>
+                <p class="fragment fade-up highlight-red">site.yml</p>
+                <p class="fragment fade-up highlight-red">webservers.yml</p>
+                <p class="fragment fade-up highlight-red">dbservers.yml</p>
+                <p class="fragment fade-up highlight-green">deploy_tools.yml</p>
+                <p class="fragment fade-up highlight-green">secure_new_host.yml</p>
+                <p class="fragment fade-up highlight-green">deploy_tools.yml</p>
+                <p class="fragment fade-up highlight-green">update_balancer_nodes.yml</p>
+            </section>
+
+
+            <section>
+                <h2>Role directory structure</h2>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+        tasks/
+            main.yml    # tasks file can include smaller files if warranted
+        handlers/
+            main.yml    # handlers file notification, restart nginx
+        templates/      # files for use with the template resource
+        files/          # place here files for uploads
+        vars/
+            main.yml    # variables associated with this role
+        defaults/
+            main.yml    # default lower priority variables
+        meta/
+            main.yml    # role dependencies
+        library/        # roles can also include custom modules
+        lookup_plugins/ # or other types of plugins
+                </code>
+                </pre>
+            </section>
+
+            <section>
+                <p>Production inventories, group variables and per host variables.</p>
+                <pre><code class="hljs" data-trim contenteditable>
+                    inventories/
+                        production/
+                            hosts # inventory file for production servers
+                            group_vars/
+                                group1 # here we assign variables to particular groups
+                                group2 # ""
+                            host_vars/
+                                hostname1 # if systems need specific variables, put them here
+                                hostname2 # ""
+
+                </code></pre>
+            </section>
+        </section>
+        <!-- End of Strutura katalogów -->
+
+        <section>
+            <h2>Variables</h2>
+            <p>Before we start using variables it’s important to know what are valid variable names.</p>
+            <p>Variable names should be letters, numbers, and underscores. Variables should always start with a
+                letter.</p>
+            <p class="fragment fade-up highlight-red">foo-port, foo port, foo.port, 12foo_port, as</p>
+            <p class="fragment fade-up highlight-green">foo_port, field1, lbs_balancer_ports</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>Inventories</h2>
+                <p>Ansible works against multiple systems in your infrastructure at the same time. </p>
+                <p>Inventories is a standard ini file!</p>
+            </section>
+            <section>
+                <h2>Inventories</h2>
+                <p>Hosts can be grouped</p>
+                <pre><code class="hljs" data-trim contenteditable>
+    mail.example.com
+
+    [webservers]
+    foo.example.com
+    bar.example.com
+
+    [dbservers]
+    one.example.com
+    two.example.com
+    three.example.com
+                </code></pre>
+            </section>
+            <!--//=========-->
+
+            <section>
+                <h2>Host in inventory</h2>
+                <p>Specific configuration like port, host name or ip</p>
+                <pre><code class="hljs" data-trim
+                           contenteditable>jumper ansible_port=5555 ansible_host=192.0.2.50</code></pre>
+            </section>
+
+            <section>
+                <h2>Adding a lot of hosts?</h2>
+                <p>Ta dam!</p>
+                <pre><code class="hljs" data-trim contenteditable>whp[01:50].jupiter.pycode.biz</code></pre>
+                <p>or</p>
+                <pre><code class="hljs" data-trim contenteditable>dbs[01:50].node-[a:f].akka.pycode.biz</code></pre>
+            </section>
+
+
+            <section>
+                <h2>Group Variables</h2>
+                <p>Variables can also be applied to an entire group at once:</p>
+                <pre><code class="hljs" data-trim contenteditable>
+[atlanta]
+host1
+host2
+
+[atlanta:vars]
+ntp_server=ntp.akka.pycode.biz
+proxy=proxy.akka.pycode.biz
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Groups of Groups, and Group Variables</h2>
+                <p>It is also possible to make groups of groups using the :children suffix you can apply variables using
+                    :vars:</p>
+                <pre><code class="hljs" data-trim contenteditable>
+[atlanta]
+host1
+host2
+
+[raleigh]
+host2
+host3
+
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Groups of Groups, and Group Variables</h2>
+                <p>It is also possible to make groups of groups using the :children suffix you can apply variables using
+                    :vars:</p>
+                <pre><code class="hljs" data-trim contenteditable>
+                [southeast:children]
+                atlanta
+                raleigh
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Groups of Groups, and Group Variables</h2>
+                <p>It is also possible to make groups of groups using the :children suffix you can apply variables using
+                    :vars:</p>
+                <pre><code class="hljs" data-trim contenteditable>
+                    [southeast:vars]
+                    some_server=whp0.node-a.akka.pycode.biz
+                    halon_system_timeout=30
+                    self_destruct_countdown=60
+                    escape_pods=2
+
+                    [usa:children]
+                    southeast
+                    northeast
+             </code></pre>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h2>Ansible ad hoc command</h2>
+                <p>Just run command without playbook</p>
+            </section>
+
+            <section>
+                <h2>Simple ad hoc command</h2>
+                <p>Use module ping on all hosts as user bruce</p>
+                <pre><code class="hljs" data-trim contenteditable>$ ansible all -m ping -u bruce</code></pre>
+            </section>
+
+            <section>
+                <h2>File Transfer</h2>
+                <p>Transfer a file directly to many servers</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible whp-all.node-a.akka.pycode.biz -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        # part of hosts
+                        [whp-all.node-a.akka.pycode.biz]
+                        whp[01:50].node-[a:f].akka.pycode.biz
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>Update</h2>
+                <p>Transfer a file directly to many servers</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible whp-all.node-a.akka.pycode.biz -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        # part of hosts
+                        [whp-all.node-a.akka.pycode.biz]
+                        whp[01:50].node-[a:f].akka.pycode.biz
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>Install packages on all servers</h2>
+                <p>Transfer a file directly to many servers</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible whp-all.jupiter.pycode.biz -m yum \
+                        $   -a "name=nginx state=latest"
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        # part of hosts
+                        [whp-all.jupiter.pycode.biz]
+                        whp[01:50].jupiter.pycode.biz
+                    </code>
+                </pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Ansible playbook</h2>
+                <p>Copying files in playbook</p>
+            </section>
+
+            <section>
+                <h2>Generate template </h2>
+                <p>Generate proxy config for all host in group proxy.node-a.akka.pycode.biz</p>
+                <pre><code class="hljs" data-trim contenteditable>
+- name: Update nginx configuration
+  template:
+    src: "roles/nginx_stream/templates/nginx.conf.j2"
+    dest: "/etc/nginx/sites-available/{{inventory_hostname}}"
+    owner: "{{ AKKA_USER_NAME }}"
+    group: "{{ AKKA_GROUP_NAME }}"
+    mode: '0600'
+  become: yes
+  become_user:  "{{ AKKA_USER_NAME }}"
+  become_method: "sudo"
+  tags: [nginx_proxy]
+                </code></pre>
+            </section>
+
+
+            <section>
+                <h2>Copy file</h2>
+                <p>Transfer a file directly to many servers</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+- name: Copying file into server
+  copy:
+    src: "roles/open_stack/templates/rootwrap.conf.j2"
+    dest: /etc/cinder/rootwrap.conf
+    owner: foo
+    group: foo
+    mode: "u=rw,g=r,o=r"
+  tags:
+    - openstack_blockstorage
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+[DEFAULT]
+rootwrap_config=/etc/cinder/rootwrap.conf
+sql_connection = mysql://cinder:openstack@198.168.xxx.yyy/cinder
+api_paste_config = /etc/cinder/api-paste.ini
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>More info about modules</h2>
+                <p>Copy & Template</p>
+                <ul>
+                    <li><a href="http://docs.ansible.com/ansible/copy_module.html">Copy module</a></li>
+                    <li><a href="http://docs.ansible.com/ansible/copy_module.html#examples">Copy module examples</a>
+                    <li><a href="http://docs.ansible.com/ansible/template_module.html">Template module </a>
+                    <li><a href="http://docs.ansible.com/ansible/template_module.html#examples">Template module
+                        examples</a>
+                    </li>
+                </ul>
+            </section>
+
+        </section>
+
+
+        <section>
+            <section>
+                <h2>Tags</h2>
+                <p>If you have a large playbook it may become useful to be able to run a specific part of the
+                    configuration without running the whole playbook.</p>
+            </section>
+
+            <section>
+                <h2>Example playbook </h2>
+                <p>Set two tags packages and configuration</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                      tasks:
+                        - yum: name={{ item }} state=installed
+                          with_items:
+                             - httpd
+                             - memcached
+                          tags:
+                             - packages
+
+                        - template: src=templates/src.j2 dest=/etc/foo.conf
+                          tags:
+                             - configuration
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>Limit playbook with tags</h2>
+                <p>We can run specific playbook with only job tagged as configuration and packages!</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible-playbook deploy_server_proxy.yml \
+                        $     --tags "configuration,packages"
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>Skipping tags</h2>
+                <p>We can skip tag!</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible-playbook deploy_server_proxy.yml
+                        $    --skip-tags "notification"
+                    </code>
+                </pre>
+            </section>
+
+
+            <section>
+                <h2>Tag a role</h2>
+                <p>Add role tag</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+roles:
+  - { role: webserver, port: 5000, tags: [ 'web', 'foo' ] }
+                    </code>
+                </pre>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>galaxy.ansible.com</h2>
+                <p>Playbook repository</p>
+                <p>
+                    <img data-src="https://galaxy.ansible.com/static/img/galaxy-logo.png" alt="Down arrow"/>
+                </p>
+            </section>
+
+            <section>
+                <h2>Instalation of role</h2>
+                <p>How install a new roles</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible-galaxy install username.rolename
+                    </code>
+                </pre>
+            </section>
+
+
+            <section>
+                <h2>Instalation of nginx role</h2>
+                <p>Install nginx role from user jdauphant</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+                        $ ansible-galaxy install jdauphant.nginx
+                    </code>
+                </pre>
+            </section>
+        </section>
+
+        <section>
+            <section data-background-video="http://i.imgur.com/H3BR7EA.mp4" data-background-color="#000000">
+                <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+                    <h2>Questions?</h2>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <h2>Links </h2>
+            <ul>
+                <li><a href="https://srebniak.pl/">srebniak.pl</a></li>
+                <li><a href="http://docs.ansible.com/ansible/playbooks_best_practices.html">Ansible best practices</a>
+                </li>
+                <li><a href="http://docs.ansible.com/ansible/modules_by_category.html">Ansible modules</a></li>
+                <li><a href="https://galaxy.ansible.com/explore">Ansible Galaxy</a></li>
+                <li><a href="https://pyCode.biz/oferta/szkolenia/ansible">Oferta szkoleniowa</a></li>
+                <li><a href="https://github.com/jdauphant/ansible-role-nginx">jdauphant.nginx</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
 </html>
