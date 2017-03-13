@@ -55,27 +55,25 @@
             <section>
                 <h2>@srebrny_dev</h2>
                 <p>Who I am</p>
-                <a href="#" class="navigate-down">
-                    <img width="208" height="268" data-src="./1-220a.jpg" alt="Down arrow"/>
-                </a>
+                <img width="250" height="300"
+                     data-src="http://www.srebniak.pl/wp-content/uploads/2017/03/1-220a-e1489364920633.jpg"
+                     alt="Down arrow"/>
             </section>
             <section>
-                <h2>As developer - 10 year of PHP </h2>
-                <p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+                <h2>Developer with 10 year in PHP ecosystem</h2>
+                <img data-src="img/php-stack.png"/>
+
             </section>
             <section>
-                <h2>Python <3 - 3 years</h2>
-                <p>That's it, time to go back up.</p>
+                <h2>Python developer</h2>
+                <p>3 years experience as backend developer</p>
+                <img data-src="img/python-stack.png">
+            </section>
+            <section>
+                <h2>DevOps (1 year) Sys admin (4 years)</h2>
+                <p></p>
                 <br>
-                <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
-                     alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-            </section>
-            <section>
-                <h2>DevOps - 2 year</h2>
-                <p>That's it, time to go back up.</p>
-                <br>
-                <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
-                     alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+                <img data-src="img/devops-stack.png">
             </section>
         </section>
 
@@ -191,22 +189,6 @@ roles/
         lookup_plugins/ # or other types of plugins
                 </code>
                 </pre>
-            </section>
-
-            <section>
-                <p>Production inventories, group variables and per host variables.</p>
-                <pre><code class="hljs" data-trim contenteditable>
-                    inventories/
-                        production/
-                            hosts # inventory file for production servers
-                            group_vars/
-                                group1 # here we assign variables to particular groups
-                                group2 # ""
-                            host_vars/
-                                hostname1 # if systems need specific variables, put them here
-                                hostname2 # ""
-
-                </code></pre>
             </section>
         </section>
         <!-- End of Strutura katalogów -->
@@ -337,7 +319,8 @@ host3
                 <p>Transfer a file directly to many servers</p>
                 <pre>
                     <code class="hljs" data-trim contenteditable>
-                        $ ansible whp-all.node-a.akka.pycode.biz -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+                        $ ansible whp-all.node-a.akka.pycode.biz \
+                        $ -m copy -a "src=/etc/hosts dest=/tmp/hosts"
                     </code>
                 </pre>
 
@@ -355,7 +338,8 @@ host3
                 <p>Transfer a file directly to many servers</p>
                 <pre>
                     <code class="hljs" data-trim contenteditable>
-                        $ ansible whp-all.node-a.akka.pycode.biz -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+                        $ ansible whp-all.node-a.akka.pycode.biz \
+                        $ -m copy -a "src=/etc/hosts dest=/tmp/hosts"
                     </code>
                 </pre>
 
@@ -390,7 +374,7 @@ host3
 
         <section>
             <section>
-                <h2>Ansible playbook</h2>
+                <h2>Ansible playbook - examples</h2>
                 <p>Copying files in playbook</p>
             </section>
 
